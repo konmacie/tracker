@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+
+{% block content_block %}
+    
+    <h3>Logs</h3>
+        
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th>ID</th>
+                <th>Status</th>
+                <th>Start</th>
+                <th>End</th>
+            </tr>
+        </thead>
+        {% for log in log_list %}
+            <tr>
+                <td>{{ log.pk }}</td>
+                <td>{{ log.get_status_display }}</td>
+                <td>{{ log.timestamp_start }}</td>
+                <td>{{ log.timestamp_end }}</td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="4">No logs</td>
+            </tr>
+        {% endfor %}
+
+    </table>
+        
+    
+        
+    
+    {% include 'includes/pagination.html' %}
+{% endblock content_block %}
+    

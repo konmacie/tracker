@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+
+{% block content_block %}
+    
+    {% if list_header %}
+        <h3>{{ list_header }}</h3>
+    {% endif %}
+        
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th>Title</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        {% for post in post_list %}
+            <tr>
+                <td><a href="{{ post.url }}" target="_blank">{{ post }}</a></td>
+                <td style="width: 200px;">{{ post.timestamp }}</td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="2">No posts</td>
+            </tr>
+        {% endfor %}
+
+    </table>
+        
+    
+        
+    
+    {% include 'includes/pagination.html' %}
+{% endblock content_block %}
+    

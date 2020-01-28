@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+{% block content_block %}
+    <h1>Index View</h1>
+
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Service</th>
+            <th>Date</th>
+        </tr>
+        {% for post in post_list %}
+            <tr>
+                <td><a href="{{ post.url }}">{{ post }}</a></td>
+                <td>{{ post.service }}</td>
+                <td>{{ post.timestamp }}</td>
+            </tr>
+        {% endfor %}
+            
+    </table>
+
+    {% include 'includes/pagination.html' %}
+{% endblock content_block %}
+    

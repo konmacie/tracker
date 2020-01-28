@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+
+{% block content_block %}
+    
+    {% if list_header %}
+        <h3>{{ list_header }}</h3>
+    {% endif %}
+        
+
+    {% regroup post_list by service as service_list %}
+
+    
+    {% for service in service_list %}
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th colspan="2">
+                        {{ service.grouper }}
+                    </th>
+                </tr>
+            </thead>
+            
+            
+            {% for post in service.list %}
+                <tr>
+                    <td><a href="{{ post.url }}" target="_blank">{{ post }}</a></td>
+                    <td style="width: 230px;">{{ post.timestamp }}</td>
+                </tr>
+            {% endfor %}
+                
+        </table>
+    {% empty %}
+        <h2>No posts</h2>
+    {% endfor %}
+        
+    
+    {% include 'includes/pagination.html' %}
+{% endblock content_block %}
+    
